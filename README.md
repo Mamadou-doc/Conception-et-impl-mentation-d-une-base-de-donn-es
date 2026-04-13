@@ -25,32 +25,52 @@ Il couvre l’ensemble du pipeline de traitement de données :
 
 - `nettoyage_donnees.py` : nettoyage et préparation des données  
 - `gestion_bdd.py` : création et gestion de la base MySQL  
-- `principal.py` : orchestration + visualisation  
+- `principal.py` : orchestration + visualisation
+- `fr-open-food-facts.csv` # Dataset 
+
 
 ---
 
-## 🔄 Pipeline
+## 🔄 Pipeline de traitement
 
-1. Chargement du dataset
-2. Nettoyage des données
-3. Modélisation relationnelle
-4. Insertion en base MySQL
-5. Analyse et visualisation
+1. Chargement du dataset Open Food Facts
+2. Nettoyage des données :
+   - gestion des valeurs manquantes
+   - suppression des doublons
+   - normalisation des variables
+   - extraction des listes (ingrédients, allergènes, additifs)
+3. Modélisation relationnelle :
+   - tables PRODUIT, MARQUE, CATEGORIE, INGREDIENT, etc.
+   - tables d’association (relations N-N)
+4. Insertion en base MySQL avec gestion des doublons
+5. Analyse exploratoire et visualisation
 
 ---
 
-## 🧠 Points techniques
+## 🧠 Points techniques clés
 
-- Relations plusieurs-à-plusieurs (tables d’association)
-- Requêtes SQL dynamiques
-- Nettoyage avec regex
-- Gestion des NaN pour MySQL
-- Pipeline automatisé
+- Gestion des relations plusieurs-à-plusieurs avec tables d’association
+- Utilisation de requêtes SQL dynamiques
+- Nettoyage avancé de chaînes avec regex
+- Pipeline automatisé d’ingestion de données
+- Gestion des NaN pour compatibilité MySQL
+- Prévention des doublons via requêtes SELECT + INSERT
+
+---
+
+## 📊 Analyses réalisées
+
+- Répartition des produits par Nutri-Score
+- Présence d’huile de palme
+- Analyse nutritionnelle par catégorie
+- Produits les plus complexes (additifs + allergènes)
+- Ingrédients les plus utilisés
 
 ---
 
 ## 🚀 Lancer le projet
 
+1. Installer les dépendances :
 ```bash
 pip install pandas matplotlib seaborn mysql-connector-python
 python principal.py
